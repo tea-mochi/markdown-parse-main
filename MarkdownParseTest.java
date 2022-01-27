@@ -16,7 +16,20 @@ public class MarkdownParseTest {
     }
 
     @Test
-    public void testCase() throws IOException{
+    public void testCase1() throws IOException{
         assertEquals(List.of("https://something.com", "some-page.html"), MarkdownParse.getLinks(Files.readString(Path.of("test-file.md"))));
+    }
+
+    @Test
+    public void testCase2() throws IOException{
+        assertEquals(List.of(), MarkdownParse.getLinks(Files.readString(Path.of("noLinkFile.md"))));
+    }
+    @Test
+    public void testCase3() throws IOException{
+        assertEquals(List.of(), MarkdownParse.getLinks(Files.readString(Path.of("fakeLink.md"))));
+    }
+    @Test
+    public void testCase4() throws IOException{
+        assertEquals(List.of(), MarkdownParse.getLinks(Files.readString(Path.of("imageTest.md"))));
     }
 }
